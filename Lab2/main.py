@@ -6,11 +6,11 @@ from random import randint
 def f(x1, x2):
     return np.cos(x1) / (1 + np.e ** (-2 * x2))
 
-def generate_csv(size):
+def generate_csv(cnt):
     file_name = "input.csv"
 
-    x1 = np.linspace(-5, 5, size)
-    x2 = np.linspace(-5, 5, size)
+    x1 = np.linspace(-5, 5, cnt)
+    x2 = np.linspace(-5, 5, cnt)
     y = f(x1, x2)
 
     pd.DataFrame({"y": y, "x1": x1, "x2": x2}).to_csv(file_name, index=False)
@@ -37,7 +37,7 @@ def paint_graphs(data):
         plt.plot(x, y)
         plt.xlabel(var)
         plt.ylabel("y")
-        plt.title(f"y({var}) and {fixed_var} = const ({fixed_value})")
+        plt.title(f"y({var}, {fixed_value:.3f})")
         plt.grid()
 
         plt.show()
